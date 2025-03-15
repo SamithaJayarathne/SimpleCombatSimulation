@@ -1,3 +1,4 @@
+// <-- Developed by Samitha Jayarathne -->
 package program;
 
 abstract class Gun {
@@ -95,7 +96,7 @@ class Sniper extends Gun {
             }
 
         } else {
-            System.out.println(name + " is out of bullets!");
+//            System.out.println(name + " is out of bullets!");
         }
     }
 }
@@ -160,33 +161,30 @@ class Soldier {
     }
 
     public void shoot() {
-
         if (currentGun != null) {
-
-            while (this.isNotWarnedOutOfBullets) {
-                if (currentGun.remainBullets > 0) {
-                    if (currentGun.remainBulletsInMag > 0) {
-                        currentGun.fire();
-                    } else {
-                        System.out.println(this.name + "'s " + currentGun.name + " magazine is empty! hurry up.. reload the gun");
-                        this.isNotWarnedOutOfBullets = false;
-                    }
-
-                } else {
-                    System.out.println(this.name + "'s " + currentGun.name + " is out of bullets! switch the gun!!!");
+            if (currentGun.remainBullets > 0) {
+                if (currentGun.remainBulletsInMag > 0) {
+                    currentGun.fire();
+                    isNotWarnedOutOfBullets = true;
+                } else if (isNotWarnedOutOfBullets) {
+                    System.out.println(this.name + "'s " + currentGun.name + " magazine is empty! Hurry up.. reload the gun");
+                    isNotWarnedOutOfBullets = false;
                 }
+            } else {
+                System.out.println(this.name + "'s " + currentGun.name + " is out of bullets! Switch the gun!!!");
             }
-
         } else {
             System.out.println(name + "... pick a gun to shoot!!!");
         }
     }
 
     public void reloadGun() {
-
-        currentGun.reload(name);
-
-
+        if (currentGun != null) {
+            currentGun.reload(name);
+            isNotWarnedOutOfBullets = true; 
+        } else {
+            System.out.println(name + "... pick a gun to reload!!!");
+        }
     }
 }
 
