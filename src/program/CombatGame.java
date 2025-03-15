@@ -33,7 +33,7 @@ abstract class Gun {
 class AK47 extends Gun {
 
     public AK47() {
-        super("AK47", 20, 10);
+        super("AK47", 300, 30);
     }
 
     @Override
@@ -96,7 +96,7 @@ class Sniper extends Gun {
             }
 
         } else {
-//            System.out.println(name + " is out of bullets!");
+            System.out.println(name + " is out of bullets!");
         }
     }
 }
@@ -181,7 +181,7 @@ class Soldier {
     public void reloadGun() {
         if (currentGun != null) {
             currentGun.reload(name);
-            isNotWarnedOutOfBullets = true; 
+            isNotWarnedOutOfBullets = true;
         } else {
             System.out.println(name + "... pick a gun to reload!!!");
         }
@@ -191,30 +191,104 @@ class Soldier {
 public class CombatGame {
 
     public static void main(String[] args) {
+      
         Soldier john = new Soldier("John");
-        Soldier g = new Soldier("Ghost");
+        Soldier ghost = new Soldier("Ghost");
 
+       
         Gun ak47 = new AK47();
         Gun pistol = new Pistol();
         Gun sniper = new Sniper();
+        
+        john.pickGun(ak47);
+        john.pickGun(ak47);
+        
+        
 
-        john.pickGun(sniper);
-
-        for (int i = 0; i < 7; i++) {
-            john.shoot();
-        }
-
-        john.reloadGun();
-
-        for (int i = 0; i < 6; i++) {
-            john.shoot();
-        }
-
-        john.reloadGun();
-
-        for (int i = 0; i < 2; i++) {
-            john.shoot();
-        }
+//        // Soldier John picks a sniper
+//        john.pickGun(sniper);
+//
+//        // Soldier John shoots 7 times (demonstrates firing and reload behavior)
+//        System.out.println("\nJohn starts shooting with the sniper:");
+//        for (int i = 0; i < 7; i++) {
+//            john.shoot();  // John fires the sniper
+//        }
+//
+//        // Reload the sniper
+//        john.reloadGun();
+//
+//        // Soldier John shoots 6 more times after reloading
+//        System.out.println("\nJohn shoots after reloading the sniper:");
+//        for (int i = 0; i < 6; i++) {
+//            john.shoot();  // John fires the sniper
+//        }
+//
+//        // Reload the sniper again
+//        john.reloadGun();
+//
+//        // Soldier John shoots 2 more times after reloading
+//        System.out.println("\nJohn shoots after reloading the sniper again:");
+//        for (int i = 0; i < 2; i++) {
+//            john.shoot();  // John fires the sniper
+//        }
+//
+//        // Soldier John switches to AK47
+//        john.switchGuns(ak47);
+//
+//        // Soldier John shoots with AK47
+//        System.out.println("\nJohn switches to AK47 and starts shooting:");
+//        for (int i = 0; i < 4; i++) {
+//            john.shoot();  // John fires AK47
+//        }
+//
+//        // Soldier John reloads AK47
+//        john.reloadGun();
+//
+//        // Soldier John shoots with AK47 after reload
+//        System.out.println("\nJohn reloads AK47 and shoots:");
+//        for (int i = 0; i < 5; i++) {
+//            john.shoot();  // John fires AK47
+//        }
+//
+//        // Soldier John switches to Pistol
+//        john.switchGuns(pistol);
+//
+//        // Soldier John shoots with Pistol
+//        System.out.println("\nJohn switches to Pistol and starts shooting:");
+//        for (int i = 0; i < 6; i++) {
+//            john.shoot();  // John fires Pistol
+//        }
+//
+//        // Soldier John tries to shoot again but the pistol magazine is empty
+//        john.shoot();  // This should trigger a reload warning
+//
+//        // Soldier John reloads the Pistol
+//        john.reloadGun();
+//
+//        // Soldier John shoots with Pistol after reload
+//        System.out.println("\nJohn reloads Pistol and shoots:");
+//        john.shoot();  // John fires Pistol
+//
+//        // Soldier John drops the Sniper
+//        john.dropGun(sniper);
+//
+//        // Soldier John tries to shoot with the Sniper (which he dropped)
+//        System.out.println("\nJohn tries to shoot with the Sniper after dropping it:");
+//        john.shoot();  // This should indicate that John needs to pick up a gun
+//
+//        // Soldier Ghost picks up a new gun and shoots
+//        ghost.pickGun(ak47);
+//        System.out.println("\nGhost picks up AK47 and starts shooting:");
+//        for (int i = 0; i < 3; i++) {
+//            ghost.shoot();  // Ghost fires AK47
+//        }
+//
+//        // Soldier Ghost reloads the AK47
+//        ghost.reloadGun();
+//
+//        // Soldier Ghost shoots after reloading
+//        System.out.println("\nGhost reloads AK47 and shoots:");
+//        ghost.shoot();  // Ghost fires AK47
 
     }
 }
